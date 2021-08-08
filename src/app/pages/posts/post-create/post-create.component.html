@@ -1,0 +1,24 @@
+<div [ngStyle]="{'margin-top': '5rem'}"  fxLayout="row" fxLayoutAlign="center center">
+    <mat-card fxFlex="50" fxLayout="column" fxLayoutGap="20px">
+        <mat-card-header fxLayout="row" fxLayoutAlign="center center">
+            <mat-card-title [ngStyle]="{'text-align':'center'}">Create a new Post</mat-card-title>
+            <mat-card-subtitle [ngStyle]="{'text-align':'center'}">devstack - posts</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content fxLayout="row">
+            <form fxLayout="column" fxFlex="100" fxLayoutGap="20px">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Post Title</mat-label>
+                    <input matInput placeholder="">
+                  </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Post Description</mat-label>
+                    <textarea matInput placeholder=""></textarea>
+                  </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-raised-button color="primary">Save</button>
+            <button mat-raised-button color="warn">Cancel</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
