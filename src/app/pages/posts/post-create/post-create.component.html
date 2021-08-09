@@ -1,24 +1,30 @@
-<div [ngStyle]="{'margin-top': '5rem'}"  fxLayout="row" fxLayoutAlign="center center">
-    <mat-card fxFlex="50" fxLayout="column" fxLayoutGap="20px">
+<div fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="20px">
+    <mat-card class="mat-elevation-z8" fxFlex="35" fxLayout="column" fxLayoutGap="20px">
         <mat-card-header fxLayout="row" fxLayoutAlign="center center">
             <mat-card-title [ngStyle]="{'text-align':'center'}">Create a new Post</mat-card-title>
-            <mat-card-subtitle [ngStyle]="{'text-align':'center'}">devstack - posts</mat-card-subtitle>
+            <mat-card-subtitle [ngStyle]="{'text-align':'center'}">devstack</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content fxLayout="row">
-            <form fxLayout="column" fxFlex="100" fxLayoutGap="20px">
+            <form [formGroup]="form" fxLayout="column" fxFlex="100" fxLayoutGap="20px">
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Post Title</mat-label>
-                    <input matInput placeholder="">
-                  </mat-form-field>
+                    <input matInput formControlName="title">
+                    <mat-error *ngIf="form.controls.title.hasError('required')">Title is <strong>required</strong></mat-error>
+                </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Post Description</mat-label>
-                    <textarea matInput placeholder=""></textarea>
-                  </mat-form-field>
+                    <textarea matInput formControlName="description"></textarea>
+                    <mat-error *ngIf="form.get('description')?.hasError('required')">Description is <strong>required</strong></mat-error>
+                </mat-form-field>
             </form>
         </mat-card-content>
         <mat-card-actions align="end">
-            <button mat-raised-button color="primary">Save</button>
-            <button mat-raised-button color="warn">Cancel</button>
+            <button *ngIf="!edit" (click)="onSave()" mat-raised-button [disabled]="form.invalid" color="primary">Save Post</button>
+            <button *ngIf="edit" (click)="onEdit()" [disabled]="form.invalid || !form.dirty" mat-raised-button color="accent">Edit Post</button>
+            <button (click)="resetForm()" mat-raised-button color="warn">Cancel</button>
         </mat-card-actions>
     </mat-card>
+    <div fxLayout="column" fxLayoutGap="20px" fxFlex="65">
+        <app-posts-list #PostListComponent [posts]="this.posts" (deletePost)="onDeletePost($event)" (editPost)="onEditPost($event)"></app-posts-list>
+    </div>
 </div>

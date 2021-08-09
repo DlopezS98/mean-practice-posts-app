@@ -1,1 +1,27 @@
-<router-outlet></router-outlet>
+<div fxLayout="column" fxFlexFill fxLayoutGap="gappx">
+    <mat-toolbar fxLayout="row" fxFlex="0 1 auto" fxLayoutAlign="space-between center" fxLayoutGap="20px" color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <button fxFlexAlign="end center" mat-stroked-button>Logout</button>
+    </mat-toolbar>
+  <mat-sidenav-container autosize fxFlex="100">
+    <mat-sidenav #sidenav mode="side" opened="true">
+        <mat-nav-list class="navigation-list" fxLayout="column" fxLayoutGap="10px">
+            <button mat-raised-button routerLink='posts/create' color="primary" matTooltip="Create Post">
+                <mat-icon>create</mat-icon>
+                <ng-container><span style="font-size:small"> Create Post</span></ng-container>
+            </button>
+            <!-- <button mat-raised-button routerLink='posts/list' color="primary" matTooltip="Create Post">
+                <mat-icon>notes</mat-icon>
+                <ng-container><span style="font-size:small"> Post List</span></ng-container>
+            </button> -->
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

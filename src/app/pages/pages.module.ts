@@ -7,18 +7,22 @@ import { MainComponent } from './main/main.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { MaterialComponentsModule } from '../shared/material-components/material-components.module';
+import { SharedModule } from '../shared/shared.module';
+import { PostsListComponent } from './posts/posts-list/posts-list.component';
 
 @NgModule({
   declarations: [
     PagesComponent,
     MainComponent,
-    PostCreateComponent
+    PostCreateComponent,
+    PostsListComponent
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     MaterialComponentsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SharedModule
   ],
   exports: [
     PagesComponent,

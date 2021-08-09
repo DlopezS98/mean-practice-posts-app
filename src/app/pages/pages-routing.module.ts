@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
 import { PagesComponent } from './pages.component';
 import { MainComponent } from './main/main.component';
+
 import { PostCreateComponent } from './posts/post-create/post-create.component';
+import { PostsListComponent } from './posts/posts-list/posts-list.component';
 
 const routes: Routes = [
   { 
@@ -11,7 +12,8 @@ const routes: Routes = [
     component: PagesComponent,
     children: [
       { path: '', component: MainComponent },
-      { path: 'posts/create', component: PostCreateComponent }
+      { path: 'posts/create', component: PostCreateComponent },
+      // { path: 'posts/list', component: PostsListComponent }
     ]
   }
 ]

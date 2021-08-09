@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pages.component.css']
 })
 export class PagesComponent implements OnInit {
-
+  isExpanded: boolean = false;
+  showTooltipDelay: number = 500;
   constructor() { }
 
   ngOnInit(): void {
